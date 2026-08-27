@@ -1,0 +1,153 @@
+{
+  "entities": {
+    "users": {
+      "title": "Users",
+      "description": "User profiles for admins, teachers, and kitchen staff",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "username": { "type": "string" },
+        "password": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "maestro", "cocinera"] },
+        "assignedGrade": { "type": "string" },
+        "avatar": { "type": "string" },
+        "themePalette": { "type": "string" }
+      },
+      "required": ["id", "name", "email", "role"]
+    },
+    "students": {
+      "title": "Students",
+      "description": "Students registered in the school",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fullName": { "type": "string" },
+        "sectionId": { "type": "string" },
+        "age": { "type": "number" },
+        "tutorName": { "type": "string" },
+        "tutorPhone": { "type": "string" },
+        "allergies": { "type": "string" },
+        "notes": { "type": "string" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["id", "fullName", "sectionId"]
+    },
+    "sections": {
+      "title": "Sections",
+      "description": "Grade levels / sections in the school",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "ageGroup": { "type": "string" },
+        "capacity": { "type": "number" },
+        "assignedTeacherId": { "type": "string" },
+        "mainTeacherId": { "type": "string" },
+        "roomNumber": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "teachers": {
+      "title": "Teachers",
+      "description": "Teacher staff records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fullName": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "sectionId": { "type": "string" },
+        "assignedSectionId": { "type": "string" },
+        "specialty": { "type": "string" },
+        "status": { "type": "string" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["id", "fullName", "email"]
+    },
+    "attendance": {
+      "title": "Attendance",
+      "description": "Daily student attendance records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string" },
+        "studentId": { "type": "string" },
+        "sectionId": { "type": "string" },
+        "status": { "type": "string", "enum": ["presente", "ausente", "retardo", "justificado"] },
+        "notes": { "type": "string" },
+        "registeredBy": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "date", "studentId", "status"]
+    },
+    "lessonPlans": {
+      "title": "Lesson Plans",
+      "description": "Teacher lesson plans",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "teacherName": { "type": "string" },
+        "teacherId": { "type": "string" },
+        "sectionName": { "type": "string" },
+        "childrenAge": { "type": "string" },
+        "date": { "type": "string" },
+        "subject": { "type": "string" },
+        "objective": { "type": "string" },
+        "development": { "type": "string" },
+        "closing": { "type": "string" },
+        "materials": { "type": "string" },
+        "aiGenerated": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "teacherName", "date", "subject"]
+    },
+    "menu": {
+      "title": "Menu",
+      "description": "Weekly dining menu items",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "dayOfWeek": { "type": "string" },
+        "mealType": { "type": "string" },
+        "dishName": { "type": "string" },
+        "description": { "type": "string" },
+        "ingredients": { "type": "array", "items": { "type": "string" } },
+        "allergensWarning": { "type": "string" },
+        "portionCount": { "type": "number" }
+      },
+      "required": ["id", "dayOfWeek", "mealType", "dishName"]
+    },
+    "alerts": {
+      "title": "Alerts",
+      "description": "School announcements and alerts",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "date": { "type": "string" },
+        "category": { "type": "string" },
+        "targetAudience": { "type": "string" },
+        "targetRole": { "type": "string" },
+        "author": { "type": "string" },
+        "authorName": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "title", "description", "date"]
+    },
+    "schoolSettings": {
+      "title": "School Settings",
+      "description": "Institutional configuration and logo",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "schoolName": { "type": "string" },
+        "schoolLogo": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id"]
+    }
+  }
+}

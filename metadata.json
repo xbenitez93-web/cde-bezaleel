@@ -1,0 +1,8 @@
+{
+  "name": "CDE Bezaleel - Control Escolar",
+  "description": "Sistema de gestión escolar con roles (Admin, Maestro, Cocinera), asistencia, planificación de clases con IA Gemini, menú de cocina, reportes exportables y personalización visual.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
